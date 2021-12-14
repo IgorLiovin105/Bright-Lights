@@ -75,11 +75,16 @@ $white: #fff;
 }
 
 @media (max-width: 767px) {
+    .header__logo img {
+        width: 30px;
+    }
+
     .menu {
         justify-self: end;
     }
 
     .menu__body {
+        padding-top: 50px;
         position: fixed;
         left: -100%;
         top: 0;
@@ -89,7 +94,7 @@ $white: #fff;
         transition: all 0.3s ease 0s;
 
         &._active {
-            right: 0;
+            left: 0;
         }
 
         & li {

@@ -171,11 +171,15 @@ input:focus {
 }
 
 @media (max-width: 767px) {
+  .header__logo img {
+    width: 30px;
+  }
   .menu {
     -ms-grid-column-align: end;
         justify-self: end;
   }
   .menu__body {
+    padding-top: 50px;
     position: fixed;
     left: -100%;
     top: 0;
@@ -186,7 +190,7 @@ input:focus {
     transition: all 0.3s ease 0s;
   }
   .menu__body._active {
-    right: 0;
+    left: 0;
   }
   .menu__body li {
     margin-bottom: 5px;
