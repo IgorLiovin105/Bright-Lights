@@ -6,6 +6,7 @@ if(iconMenu) {
         iconMenu.classList.toggle('_active');
         document.body.classList.toggle('_lock');
         menuBody.classList.toggle('_active');
+        
     });
 }
 

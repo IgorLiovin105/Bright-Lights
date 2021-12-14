@@ -5,7 +5,7 @@ $bg: #1C1B21;
 $white: #fff;
 
 %border-radius {
-    border-radius: 30px 0;
+    border-radius: 20px 0;
 }
 
 @mixin container($max-width, $padding) {
@@ -162,8 +162,102 @@ $white: #fff;
     }
 }
 
+// first block
+
+#myVideo {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
 .first {
     width: 100%;
     height: 100vh;
-    box-shadow: 0 20px 5px 3px #000 ;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    & .container {
+        position: relative;
+        width: 100%;
+        @include container(1140px, 0 15px);
+        display: grid;
+        align-items: center;
+        justify-items: start;
+        & h2 {
+            color: $white;
+            font-family: 'Poppins';
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 72px;
+            align-self: end;
+            margin-bottom: 10px;
+        }
+        & h1 {
+            font-family: 'Poppins';
+            font-weight: 700;
+            color: rgba(0, 0, 0, 0);
+            -webkit-text-stroke: 1px $white;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .first {
+        & h1 {
+            font-size: 100px;
+            line-height: 150px;
+        }
+    }
+}
+
+.news {
+    @include container(1140px, 0 15px);
+    display: grid;
+    grid-template: 1fr / 1fr 1fr 1fr;
+    position: relative;
+    &__item {
+        position: relative;
+    }
+    & p {
+        position: absolute;
+        bottom: 0;
+        width: 350px;
+        padding: 20px;
+        background: rgba($color: #7A66CC, $alpha: 0.7);
+        font-family: 'Poppins';
+        color: $white;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        @extend %border-radius;
+    }
+}
+
+@media (max-width: 1200px) {
+    .news {
+        grid-template: 1fr 1fr / 1fr 1fr;
+        justify-items: center;
+        row-gap: 20px;
+        &__item:last-child {
+            grid-column: span 2;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .news {
+        padding: 20px 0;
+        grid-template: 1fr 1fr 1fr / 1fr;
+        &__item:last-child {
+            grid-column: span 1;
+        }
+    }
+}
+
+@media (max-width: 375px) {
+    .news__item,
+    .news__item img,
+    .news__item p {
+        width: 100%;
+    }
 }
