@@ -44,8 +44,14 @@ $ff: 'Poppins';
 .header {
     width: 100%;
     position: fixed;
-    top: 0;
+    top: 100px;
+    opacity: 0;
     left: 0;
+    &._active {
+        top: 0;
+        opacity: 1;
+        transition: all ease 2s;
+    }
     z-index: 10;
     &__container {
         @include container(950px, 0 15px);
@@ -201,12 +207,26 @@ $ff: 'Poppins';
             line-height: 72px;
             align-self: end;
             margin-bottom: 10px;
+            transform: translate(0, 120%);
+            opacity: 0;
+            &._active {
+                transform: translate(0, 0);
+                opacity: 1;
+                transition: all 2s ease 1s;
+            }
         }
 
         & h1 {
             font-weight: 700;
             color: rgba(0, 0, 0, 0);
             -webkit-text-stroke: 1px $white;
+            transform: translate(0, 120%);
+            opacity: 0;
+            &._active {
+                transform: translate(0, 0);
+                opacity: 1;
+                transition: all 2s ease 2s;
+            }
         }
     }
 }
@@ -224,20 +244,41 @@ $ff: 'Poppins';
     @include container(1100px, 0);
     display: grid;
     grid-template: 1fr / 1fr 1fr 1fr;
+    padding: 20px 0;
     position: relative;
+
     &__item {
         position: relative;
-    }
-    & p {
-        position: absolute;
-        bottom: 0;
-        width: 350px;
-        padding: 20px;
-        background: rgba($color: #7A66CC, $alpha: 0.7);
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 24px;
-        @extend %border-radius;
+
+        & img {
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        &._active img {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 2s ease 0s;
+        }
+
+        & p {
+            position: absolute;
+            bottom: 0;
+            width: 350px;
+            padding: 20px;
+            background: rgba($color: #7A66CC, $alpha: 0.7);
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            @extend %border-radius;
+            transform: translate(0, 120%);
+            opacity: 0;
+        }
+        &._active p {
+            transform: translate(0, 0);
+            opacity: 1;
+            transition: all 2s ease 1s;
+        }
     }
 }
 
@@ -275,12 +316,22 @@ $ff: 'Poppins';
     display: flex;
     justify-content: space-between;
     margin-top: 180px;
+    margin-bottom: 130px;
 
     &__title {
         display: flex;
         color: $white;
-        font-size: 48px;
         font-weight: 700;
+        font-size: 0;
+        opacity: 0;
+        transform: scale(0);
+
+        &._active {
+            font-size: 48px;
+            opacity: 1;
+            transform: scale(1);
+            transition: all ease 2s;
+        }
 
         & img {
             margin-right: 30px;
@@ -293,32 +344,71 @@ $ff: 'Poppins';
         line-height: 24px;
         margin-top: 80px;
         opacity: 0.5;
-        margin-bottom: 60px;
+        margin-bottom: 0;
+        opacity: 0;
+        transform: translate(-120%, 0);
+
+        &._active {
+            margin-bottom: 60px;
+            opacity: 1;
+            transform: translate(0, 0);
+            transition: all ease 2s;
+        }
     }
 
     &__item {
         position: relative;
+
+        &._active .about__img1 {
+            transform: translate(0, 0);
+            opacity: 1;
+            transition: all 2s ease 1s;
+        }
+
+        &._active .about__img2 {
+            transform: translate(0, 0);
+            opacity: 1;
+            transition: all ease 2s;
+        }
     }
 
     &__img1 {
         position: absolute;
         top: 70px;
         right: 95px;
+        z-index: 2;
+        transform: translate(120%, 0);
+        opacity: 0;
     }
 
     &__img2 {
         margin-top: 150px;
-        box-shadow: 20px 20px 20px url("../img/about/about\ img\ 2.svg");
+        transform: translate(120%, 0);
+        opacity: 0;
     }
+
     &__list {
         display: grid;
         grid-template: 1fr 1fr / 1fr 1fr;
         gap: 30px;
+
         & li {
+            transform: translate(-120%, 0);
+            opacity: 0;
             font-size: 18px;
             display: flex;
+
             & img {
                 margin-right: 20px;
+            }
+        }
+
+        &._active {
+
+            li {
+                transform: translate(0, 0);
+                opacity: 1;
+                transition: all ease 2s;
             }
         }
     }
@@ -354,6 +444,22 @@ $ff: 'Poppins';
                 grid-column: 2;
                 & img {
                     width: 30px;
+                }
+            }
+            &._active {
+                li {
+                    transform: translate(0, 0);
+                    opacity: 1;
+                    @for $var from 1 to 5 {
+                        $delay: $var * 0.2;
+                        &:nth-child(#{$var}) {
+                            @if $var == 1 {
+                                transition: transform 1s ease 0s;
+                            } @else  {
+                                transition: transform 1s ease #{$delay + s};
+                            }
+                        }
+                    }
                 }
             }
         }
