@@ -1,1 +1,164 @@
 @import "nullstyle";
+
+$bg: #1C1B21;
+
+$white: #fff;
+
+%border-radius {
+    border-radius: 30px 0;
+}
+
+@mixin container($max-width, $padding) {
+    max-width: $max-width;
+    padding: $padding;
+    margin: 0 auto;
+}
+
+@mixin linkhover($link-hover-color) {
+    transition: all ease .3s;
+    &:hover {
+        color: $link-hover-color;
+        border-bottom: 2px solid $link-hover-color;
+    }
+}
+
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background: $bg;
+}
+
+// header
+
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    &__container {
+        @include container(950px, 0 15px);
+        display: grid;
+        grid-template: 1fr / 260px 1fr;
+        align-items: center;
+    }
+    &__logo {
+        position: relative;
+        z-index: 10;
+    }
+}
+
+.menu__link {
+    font-family: 'Poppins';
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    color: $white;
+    @include linkhover(#d4d4d4);
+}
+
+.menu__list {
+    position: relative;
+    z-index: 10;
+}
+
+@media (min-width: 768px) {
+    .header__container {
+        height: 90px;
+    }
+
+    .menu__list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 767px) {
+    .menu {
+        justify-self: end;
+    }
+
+    .menu__body {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background:$bg;
+        transition: all 0.3s ease 0s;
+
+        &._active {
+            right: 0;
+        }
+
+        & li {
+            margin-bottom: 5px;
+            margin-left: 15px;
+        }
+    }
+
+    .header__container {
+        height: 50px;
+    }
+
+    .menu__icon {
+        z-index: 5;
+        display: block;
+        position: relative;
+        width: 25px;
+        height: 15px;
+        cursor: pointer;
+
+        &::before,
+        &::after {
+            content: "";
+        }
+
+        & span {
+            top: 50%;
+            transform: translate(0px, -50%);
+        }
+
+        &::before {
+            top: 0;
+        }
+
+        &::after {
+            bottom: 0;
+        }
+
+        & span,
+        &::before,
+        &::after {
+            left: 0;
+            position: absolute;
+            height: 10%;
+            width: 100%;
+            transition: all 0.3s ease 0s;
+            background: #fff;
+            border-radius: 5px;
+        }
+
+        
+        &._active span {
+            transform: scale(0);
+        }
+
+        &._active::before {
+            top: 50%;
+            transform: rotate(45deg) translate(0px, -50%);
+        }
+
+        &._active::after {
+            top: 50%;
+            transform: rotate(-45deg) translate(0px, -50%);
+        }
+    }
+}
+
+.first {
+    width: 100%;
+    height: 100vh;
+    box-shadow: 0 20px 5px 3px #000 ;
+}
