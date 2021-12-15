@@ -278,12 +278,6 @@ body._lock {
   }
 }
 
-#myVideo {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
 .first {
   width: 100%;
   height: 100vh;
@@ -293,6 +287,8 @@ body._lock {
       -ms-flex-align: center;
           align-items: center;
   justify-items: center;
+  background: url("../img/first/background.jpg") center no-repeat;
+  background-size: cover;
 }
 
 .first .container {
@@ -776,8 +772,8 @@ body._lock {
   -webkit-transform: translate(0, 0) scale(1);
           transform: translate(0, 0) scale(1);
   opacity: 1;
-  -webkit-transition: all 2s ease 1s;
-  transition: all 2s ease 1s;
+  -webkit-transition: all ease 2s;
+  transition: all ease 2s;
 }
 
 .music__img-img._play {
