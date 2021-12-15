@@ -69,3 +69,105 @@ if(animItems.length > 0) {
         animOnScroll();
     }, 500);
 }
+
+
+
+const player = document.querySelector('.player'),
+      playBtn = document.querySelector('.play'),
+      audio = document.querySelector('.audio'),
+      progresContainer = document.querySelector('.progres__container'),
+      progres = document.querySelector('.progres'),
+      musicTitle = document.querySelector('.song__title'),
+      imgSrc = document.querySelector('.img__src'),
+      prev = document.querySelector('.prev'),
+      next = document.querySelector('.next'),
+      musicImg = document.querySelector('.music__img-img');
+
+const songs = ['3LAU, Bright Lights — How You Love Me', 'Bright Lights, Kaleena Zanders, Kandy — War For Love', 'Pink Is Punk, Benny Benassi, Bright Lights — Ghost', 'Hardwell, Dyro, Bright Lights — Never Say Goodbye', 'Zeds Dead, Dirtyphonics, Bright Lights — Where Are You Now', 'Zedd, Bright Lights — Follow You Down'];
+
+let songIndex = 0;
+
+function loadSong(song) {
+    musicTitle.innerHTML = song;
+    audio.src = `audio/${song}.mp3`;
+}
+
+loadSong(songs[songIndex]);
+
+function playSong() {
+    player.classList.add('_play');
+    musicImg.classList.add('_play');
+    imgSrc.src = `img/music/pause.svg`;
+    audio.play();
+}
+
+function pauseSong() {
+    player.classList.remove('_play');
+    musicImg.classList.remove('_play');
+    imgSrc.src = `img/music/play.svg`;
+    audio.pause();
+}
+
+playBtn.addEventListener("click", () => {
+    const isPlaying = musicImg.classList.contains('_play');
+    if(isPlaying) {
+        pauseSong();
+    }
+    else {
+        playSong();
+    }
+});
+
+function prevSong() {
+    prev.addEventListener("click", function() {
+        if(songIndex > songs.length) {
+            songIndex--;
+        }
+    });
+}
+
+function nextSong() {
+    songIndex++;
+
+    if(songIndex > songs.length -1) {
+        songIndex = 0;
+    }
+
+    loadSong(songs[songIndex]);
+    playSong();
+}
+
+next.addEventListener("click", nextSong);
+
+function prevSong() {
+    songIndex--;
+
+    if(songIndex < 0) {
+        songIndex = songs.length - 1;
+    }
+
+    loadSong(songs[songIndex]);
+    playSong();
+}
+
+prev.addEventListener("click", prevSong);
+
+function updateProgres(e) {
+    const {duration, currentTime} = e.srcElement;
+    const progresPercent = (currentTime / duration) * 100;
+    progres.style.width = `${progresPercent}%`; 
+}
+
+audio.addEventListener("timeupdate", updateProgres);
+
+function setProgres(e) {
+    const width = this.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audio.duration;
+
+    audio.currentTime = (clickX / width) * duration;
+}
+
+progresContainer.addEventListener("click", setProgres);
+
+audio.addEventListener("ended", nextSong);

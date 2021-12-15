@@ -103,6 +103,10 @@ input:focus {
   border-radius: 20px 0;
 }
 
+body._lock {
+  overflow: hidden;
+}
+
 .wrapper {
   width: 100%;
   min-height: 100vh;
@@ -116,6 +120,7 @@ input:focus {
           flex-direction: column;
   font-family: "Poppins";
   color: #fff;
+  overflow: hidden;
 }
 
 .main {
@@ -570,7 +575,7 @@ input:focus {
     text-align: center;
     margin: 50px 0;
   }
-  .about__title {
+  .about .about__title {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -727,5 +732,466 @@ input:focus {
 @media (max-width: 768px) {
   .mtv__text {
     padding: 10px 20px;
+  }
+}
+
+.music {
+  max-width: 1140px;
+  padding: 0 15px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100%;
+  margin-bottom: 200px;
+}
+
+.music__img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.music__img-img {
+  -webkit-box-shadow: 0 0 0 15px rgba(122, 102, 204, 0.6), 0 0 0 30px rgba(122, 102, 204, 0.3);
+          box-shadow: 0 0 0 15px rgba(122, 102, 204, 0.6), 0 0 0 30px rgba(122, 102, 204, 0.3);
+  border-radius: 50%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -webkit-transform: translate(120%, 0) scale(0);
+          transform: translate(120%, 0) scale(0);
+  opacity: 0;
+  -webkit-transition: all ease 2s;
+  transition: all ease 2s;
+}
+
+.music__img-img._active {
+  -webkit-transform: translate(0, 0) scale(1);
+          transform: translate(0, 0) scale(1);
+  opacity: 1;
+  -webkit-transition: all 2s ease 1s;
+  transition: all 2s ease 1s;
+}
+
+.music__img-img._play {
+  -webkit-animation-name: musicPlayImg;
+          animation-name: musicPlayImg;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.music__body {
+  max-width: 540px;
+  width: 100%;
+  display: block;
+  -webkit-transform: translate(-120%, 0) scale(0);
+          transform: translate(-120%, 0) scale(0);
+  opacity: 0;
+}
+
+.music__body._active {
+  -webkit-transform: translate(0, 0) scale(1);
+          transform: translate(0, 0) scale(1);
+  opacity: 1;
+  -webkit-transition: all ease 2s;
+  transition: all ease 2s;
+}
+
+.music__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 330px;
+  width: 100%;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 62px;
+}
+
+.music__player {
+  max-width: 543px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 50px;
+}
+
+.music__player .progres__container {
+  margin-left: 50px;
+  width: 100%;
+  height: 6px;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.music__player .progres__container .progres {
+  max-width: 100%;
+  width: 0;
+  height: 6px;
+  border-radius: 10px;
+  background: #7A66CC;
+}
+
+.music .player__btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.music .player__btns {
+  cursor: pointer;
+}
+
+.music .player__btns .play {
+  margin: 0 20px;
+}
+
+.music .song__title {
+  color: #fff;
+  font-size: 18px;
+}
+
+@-webkit-keyframes musicPlayImg {
+  0% {
+    -webkit-box-shadow: 0 0 0 30px rgba(122, 102, 204, 0.6), 0 0 0 60px rgba(122, 102, 204, 0.3);
+            box-shadow: 0 0 0 30px rgba(122, 102, 204, 0.6), 0 0 0 60px rgba(122, 102, 204, 0.3);
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 15px rgba(122, 102, 204, 0.6), 0 0 0 30px rgba(122, 102, 204, 0.3);
+            box-shadow: 0 0 0 15px rgba(122, 102, 204, 0.6), 0 0 0 30px rgba(122, 102, 204, 0.3);
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes musicPlayImg {
+  0% {
+    -webkit-box-shadow: 0 0 0 30px rgba(122, 102, 204, 0.6), 0 0 0 60px rgba(122, 102, 204, 0.3);
+            box-shadow: 0 0 0 30px rgba(122, 102, 204, 0.6), 0 0 0 60px rgba(122, 102, 204, 0.3);
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 15px rgba(122, 102, 204, 0.6), 0 0 0 30px rgba(122, 102, 204, 0.3);
+            box-shadow: 0 0 0 15px rgba(122, 102, 204, 0.6), 0 0 0 30px rgba(122, 102, 204, 0.3);
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@media (max-width: 1200px) {
+  .music {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    margin-bottom: 70px;
+  }
+  .music__title {
+    margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    font-size: 30px;
+  }
+  .music__img-img {
+    width: 60%;
+    margin: 0 auto;
+  }
+  .song__title {
+    text-align: center;
+  }
+}
+
+.gallery {
+  max-width: 1100px;
+  padding: 0;
+  margin: 0 auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template: 1fr 1fr / 1fr 1fr 1fr 1fr;
+  gap: 38px;
+}
+
+.gallery .gallery__text {
+  font-size: 24px;
+  color: #7A66CC;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  opacity: 0;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+.gallery .gallery___item {
+  position: relative;
+  grid-column: span 1;
+  grid-row: span 1;
+  cursor: pointer;
+}
+
+.gallery .gallery___item img {
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+.gallery .gallery___item:hover img {
+  -webkit-filter: opacity(0.3);
+          filter: opacity(0.3);
+}
+
+.gallery .gallery___item:hover .gallery__text {
+  opacity: 1;
+}
+
+.gallery .gallery___item_low_row {
+  opacity: 0;
+  -webkit-transform: translate(0, -120%);
+          transform: translate(0, -120%);
+}
+
+.gallery .gallery___item_low_row._active {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  opacity: 1;
+  -webkit-transition: all ease 2s;
+  transition: all ease 2s;
+}
+
+.gallery .gallery___item_big_row {
+  grid-row: span 2;
+}
+
+.gallery .gallery___item_big_row {
+  opacity: 0;
+}
+
+.gallery .gallery___item_big_row._active {
+  opacity: 1;
+  -webkit-transition: all 1s ease 2s;
+  transition: all 1s ease 2s;
+}
+
+@media (max-width: 1200px) {
+  .gallery {
+    -ms-grid-rows: 1fr 1fr;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template: 1fr 1fr / 1fr 1fr;
+    justify-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .gallery .gallery___item_big_row {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+  .gallery .gallery___item_low_row {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .gallery {
+    -ms-grid-rows: 1fr 1fr 1fr 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template: 1fr 1fr 1fr 1fr / 1fr;
+  }
+  .gallery img {
+    width: 100%;
+  }
+}
+
+.tours {
+  max-width: 1140px;
+  padding: 0 15px;
+  margin: 0 auto;
+  margin-top: 160px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.tours .card {
+  margin: 20px 0;
+  border-radius: 30px 0;
+  background: #9e9e9e;
+  opacity: 0;
+  max-width: 350px;
+  width: 100%;
+}
+
+.tours .card._active {
+  background: #2F2B2B;
+  opacity: 1;
+  -webkit-transition: all ease 2s;
+  transition: all ease 2s;
+}
+
+.tours .card img {
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+  max-width: 350px;
+  width: 100%;
+}
+
+.tours .card img:hover {
+  -webkit-filter: opacity(0.5);
+          filter: opacity(0.5);
+}
+
+.tours .card__title {
+  font-size: 18px;
+  font-weight: 700;
+  opacity: 0.5;
+  margin: 30px 0 20px 35px;
+}
+
+.tours .card__text {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 30px 0 30px 35px;
+}
+
+.tours .card .btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.tours .card .btns p {
+  opacity: 0.5;
+  margin: 0 auto;
+}
+
+.tours .card .btns a {
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+  background: #7A66CC;
+  padding: 20px 60px;
+  border-radius: 30px 0;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+.tours .card .btns a:hover {
+  background: #646464;
+  color: black;
+}
+
+.tours .card .btns p,
+.tours .card .btns a {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+@media (max-width: 1200px) {
+  .tours {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+.footer {
+  max-width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+  margin-top: 180px;
+}
+
+.footer * {
+  margin: 0 auto;
+}
+
+.footer__links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 510px;
+  width: 100%;
+}
+
+.contacts__img {
+  max-width: 533px;
+  width: 100%;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.copyright {
+  margin-top: 100px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 767px) {
+  .footer {
+    margin-top: 50px;
+  }
+  .contacts__img {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  .footer__links {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .footer__links li {
+    margin: 10px 0;
+  }
+  .copyright {
+    margin-top: 40px;
+    margin-bottom: 20px;
   }
 }
