@@ -1,2 +1,1 @@
-This was my the hardest page I made.
-And unfortunately pagespeed is bad :(
+The hardest page I made
