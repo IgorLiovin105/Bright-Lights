@@ -83,7 +83,7 @@ const player = document.querySelector('.player'),
       next = document.querySelector('.next'),
       musicImg = document.querySelector('.music__img-img');
 
-const songs = ['3LAU, Bright Lights — How You Love Me', 'Bright Lights, Kaleena Zanders, Kandy — War For Love', 'Pink Is Punk, Benny Benassi, Bright Lights — Ghost', 'Hardwell, Dyro, Bright Lights — Never Say Goodbye', 'Zeds Dead, Dirtyphonics, Bright Lights — Where Are You Now', 'Zedd, Bright Lights — Follow You Down'];
+const songs = ['3LAU, Bright Lights — How You Love Me', 'Bright Lights, Kaleena Zanders, Kandy — War For Love', 'Pink Is Punk, Benny Benassi, Bright Lights — Ghost'];
 
 let songIndex = 0;
 

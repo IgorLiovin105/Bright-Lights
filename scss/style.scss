@@ -612,7 +612,6 @@ body._lock {
         align-items: center;
 
         &-img {
-            box-shadow: 0 0 0 15px rgba($color: #7A66CC, $alpha: 0.6), 0 0 0 30px rgba($color: #7A66CC, $alpha: 0.3);
             border-radius: 50%;
             align-self: center;
             transform: translate(120%, 0) scale(0);
@@ -708,7 +707,7 @@ body._lock {
     }
 
     100% {
-        box-shadow: 0 0 0 15px rgba($color: #7A66CC, $alpha: 0.6), 0 0 0 30px rgba($color: #7A66CC, $alpha: 0.3);
+        box-shadow: 0;
         transform: scale(1);
     }
 }
